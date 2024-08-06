@@ -81,22 +81,24 @@ using namespace std;
 class Solution {
 public:
     string countAndSay(int n) {
-        string ans = "1";
-        for (int i = 2; i <= n; i++) {
-            string cur = "";
-            for (int j = 0; j < ans.size(); j++) {
-                int cnt = 1;
+        string ans = "1"; // 初始值为 "1"
+        for (int i = 2; i <= n; i++) { // 从第2项开始生成，直到第n项
+            string cur = ""; // 用于存放当前项的报数结果
+            for (int j = 0; j < ans.size(); j++) { // 遍历当前的 ans 字符串
+                int cnt = 1; // 计数器，统计相同字符的数量
+                // 统计相同字符的数量
                 while (j + 1 < ans.size() && ans[j] == ans[j + 1]) {
                     j++;
                     cnt++;
                 }
+                // 将计数结果和字符追加到 cur 中
                 cur += to_string(cnt) + ans[j];
             }
-            ans = cur;
+            ans = cur; // 更新 ans 为当前项的报数结果
         }
-        return ans;
-
+        return ans; // 返回第n项的报数结果
     }
 };
+
 // @lc code=end
 
